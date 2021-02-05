@@ -26,9 +26,12 @@ router.beforeEach(async(to, from, next) => {
       next({ path: '/' })
       NProgress.done()
     } else {
+      // 获取用户名
       const hasGetUserInfo = store.getters.name
+      // 如果有用户名
       if (hasGetUserInfo) {
         next()
+      // 如果没有用户名  
       } else {
         try {
           // get user info
