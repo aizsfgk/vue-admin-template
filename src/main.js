@@ -6,15 +6,26 @@ import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 import ElementUI from 'element-ui'
 // 引入主题css
 import 'element-ui/lib/theme-chalk/index.css'
+
+// 国际化
 import locale from 'element-ui/lib/locale/lang/en' // lang i18n
 
+// 全局css
 import '@/styles/index.scss' // global css
 
+
+// 导入APP
 import App from './App'
+// 导入存储
 import store from './store'
+// 导入路由
 import router from './router'
 
+
+
+// 导入图标
 import '@/icons' // icon
+// 
 import '@/permission' // permission control
 
 /**

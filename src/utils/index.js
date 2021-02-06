@@ -3,21 +3,26 @@
  */
 
 /**
+ * 解析时间为字符串
+ * 
  * Parse the time to string
  * @param {(Object|string|number)} time
  * @param {string} cFormat
  * @returns {string | null}
  */
 export function parseTime(time, cFormat) {
+  
   if (arguments.length === 0 || !time) {
     return null
   }
+
   const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}'
   let date
   if (typeof time === 'object') {
     date = time
   } else {
     if ((typeof time === 'string')) {
+      // 匹配格式
       if ((/^[0-9]+$/.test(time))) {
         // support "1548221490638"
         time = parseInt(time)
@@ -31,6 +36,7 @@ export function parseTime(time, cFormat) {
     if ((typeof time === 'number') && (time.toString().length === 10)) {
       time = time * 1000
     }
+
     date = new Date(time)
   }
   const formatObj = {
@@ -52,14 +58,19 @@ export function parseTime(time, cFormat) {
 }
 
 /**
+ * 格式化时间
  * @param {number} time
  * @param {string} option
  * @returns {string}
  */
 export function formatTime(time, option) {
+
+  // 
   if (('' + time).length === 10) {
     time = parseInt(time) * 1000
   } else {
+    
+  //   
     time = +time
   }
   const d = new Date(time)
@@ -95,6 +106,7 @@ export function formatTime(time, option) {
 }
 
 /**
+ * 参数转为对象
  * @param {string} url
  * @returns {Object}
  */

@@ -1,5 +1,6 @@
 <template>
   <el-breadcrumb class="app-breadcrumb" separator="/">
+
     <transition-group name="breadcrumb">
       <el-breadcrumb-item v-for="(item,index) in levelList" :key="item.path">
         <span v-if="item.redirect==='noRedirect'||index==levelList.length-1" class="no-redirect">{{ item.meta.title }}</span>
@@ -10,6 +11,7 @@
 </template>
 
 <script>
+// 路径转为正则表达式
 import pathToRegexp from 'path-to-regexp'
 
 export default {
@@ -19,11 +21,15 @@ export default {
     }
   },
   watch: {
+    // 观察路由值的变化
+    // 如果路由值发生了变化
+    // 则获取面包屑
     $route() {
       this.getBreadcrumb()
     }
   },
   created() {
+    // 创建的时候先获取下
     this.getBreadcrumb()
   },
   methods: {
