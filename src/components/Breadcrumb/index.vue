@@ -34,13 +34,15 @@ export default {
   },
   methods: {
     getBreadcrumb() {
+      console.log("this.$route.matched: ", this.$route.matched)
       // only show routes with meta.title
       let matched = this.$route.matched.filter(item => item.meta && item.meta.title)
-      const first = matched[0]
+      // const first = matched[0]
 
-      if (!this.isDashboard(first)) {
-        matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }}].concat(matched)
-      }
+      // 不要这个：仪表盘
+      // if (!this.isDashboard(first)) {
+      //   matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }}].concat(matched)
+      // }
 
       this.levelList = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)
     },

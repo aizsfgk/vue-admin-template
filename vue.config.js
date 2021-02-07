@@ -36,8 +36,11 @@ module.exports = {
       warnings: false,
       errors: true
     },
+    // 引入mock
     before: require('./mock/mock-server.js')
   },
+
+  // 如果这个值是一个对象，则会通过 webpack-merge 合并到最终的配置中。
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.

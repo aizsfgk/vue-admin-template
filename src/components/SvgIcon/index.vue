@@ -22,12 +22,15 @@ export default {
     }
   },
   computed: {
+    // 是否是外部的
     isExternal() {
       return isExternal(this.iconClass)
     },
+    // icon名字
     iconName() {
       return `#icon-${this.iconClass}`
     },
+    // svg类
     svgClass() {
       if (this.className) {
         return 'svg-icon ' + this.className
@@ -35,6 +38,8 @@ export default {
         return 'svg-icon'
       }
     },
+    // 外部图形遮罩
+    // https://www.cnblogs.com/zhinian-/p/12572844.html
     styleExternalIcon() {
       return {
         mask: `url(${this.iconClass}) no-repeat 50% 50%`,
