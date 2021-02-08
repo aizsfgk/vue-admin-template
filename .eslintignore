@@ -1,3 +1,4 @@
+# eslint 忽视的文件目录
 build/*.js
 src/assets
 public

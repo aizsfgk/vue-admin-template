@@ -1,7 +1,7 @@
 <script>
 export default {
   name: 'MenuItem',
-  functional: true,
+  functional: true, // 使组件无状态 (没有 data) 和无实例 (没有 this 上下文)。他们用一个简单的 render 函数返回虚拟节点使它们渲染的代价更小
   props: {
     icon: {
       type: String,
@@ -12,7 +12,7 @@ export default {
       default: ''
     }
   },
-  render(h, context) {
+  render(h, context) { // https://www.cnblogs.com/tugenhua0707/p/7528621.html
     const { icon, title } = context.props
     const vnodes = []
 

@@ -29,6 +29,7 @@ module.exports = {
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
+  // 这块用来配置开发服务器
   devServer: {
     port: port,
     open: true,
@@ -41,6 +42,7 @@ module.exports = {
   },
 
   // 如果这个值是一个对象，则会通过 webpack-merge 合并到最终的配置中。
+  // 调整 webpack 配置最简单的方式就是在 vue.config.js 中的 configureWebpack 选项提供一个对象
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
@@ -51,6 +53,7 @@ module.exports = {
       }
     }
   },
+  
   chainWebpack(config) {
     // it can improve the speed of the first screen, it is recommended to turn on preload
     config.plugin('preload').tap(() => [
@@ -58,12 +61,16 @@ module.exports = {
         rel: 'preload',
         // to ignore runtime.js
         // https://github.com/vuejs/vue-cli/blob/dev/packages/@vue/cli-service/lib/config/app.js#L171
+        // https://github.com/vuejs/preload-webpack-plugin
+        // 黑名单
         fileBlacklist: [/\.map$/, /hot-update\.js$/, /runtime\..*\.js$/],
+        // only preload initial chunks with include: 'initial'
         include: 'initial'
       }
     ])
 
     // when there are many pages, it will cause too many meaningless requests
+    // 插件取消prefetch,容易造成太多无意义的请求
     config.plugins.delete('prefetch')
 
     // set svg-sprite-loader
