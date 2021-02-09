@@ -21,8 +21,6 @@ import store from './store'
 // 导入路由
 import router from './router'
 
-
-
 // 导入图标
 import '@/icons' // icon
 // 

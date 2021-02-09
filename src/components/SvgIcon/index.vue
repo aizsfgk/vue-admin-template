@@ -1,5 +1,8 @@
 <template>
+  <!-- 外部标签 -->
   <div v-if="isExternal" :style="styleExternalIcon" class="svg-external-icon svg-icon" v-on="$listeners" />
+  <!-- svg标签 -->
+  <!-- aria-hidden="true" 会把整个元素从可访问性API中移除 -->
   <svg v-else :class="svgClass" aria-hidden="true" v-on="$listeners">
     <use :xlink:href="iconName" />
   </svg>
@@ -12,10 +15,12 @@ import { isExternal } from '@/utils/validate'
 export default {
   name: 'SvgIcon',
   props: {
+    // 图标类
     iconClass: {
       type: String,
       required: true
     },
+    // 类名
     className: {
       type: String,
       default: ''
